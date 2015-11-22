@@ -1,0 +1,41 @@
+;; suricata
+;; type: detector
+;; plugin_id: 1001
+;;
+;; $Id: suricataunified.cfg,v 1.9 2010/02/20 09:13:10 dkarg Exp $
+
+
+[DEFAULT]
+plugin_id=1001
+
+[config]
+interface=<%= @interface %>
+type=detector
+enable=yes
+source=snortlog
+
+process=suricata
+start=no  ; launch plugin process when agent starts
+stop=no   ; shutdown plugin process when agent stops
+startup=/etc/init.d/%(process)s start
+shutdown=killall -9 %(process)s
+
+directory=<%= @datadir %>
+
+;log file prefix. This is the same than filename parameter in snort.cfg 
+prefix=suricata.log
+
+;NOTE: You must choose between cookedlinux or ethernet depending on your snort configuration. 
+; - cookedlinux is used when you use snort with "-i any" on linux. 
+; - ethernet is used when snort starts with just one interface defined (eth0, eth1...), and not "any"
+linklayer=ethernet
+;linklayer=cookedlinux
+
+; NOTE: You must specify the version number of the unified format being used
+; 1 = unified version 1
+; 2 = unified version 2
+unified_version=2
+
+
+;NOTE: directory+prefix (snort unified plugin) = location (all the other plugins)
+
