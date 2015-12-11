@@ -26,7 +26,7 @@ class ossim (
   if $include_snort == true {
     include snort
     $snort_interfaces = $snort::interfaces
-    snortunified{$snort_interfaces: }
+    ::ossim::snortunified{$snort_interfaces: }
   }
   if $include_suricata == true {
 
