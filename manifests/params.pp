@@ -22,5 +22,5 @@ class ossim::params {
   $suricata_interfaces = undef
   $suricata_logdir     = '/data/suricata/logs/'
   $include_ossec       = false
-  $verbose             = 'info'
+  $verbose             = 'error'
 }
