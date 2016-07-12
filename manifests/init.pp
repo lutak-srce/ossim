@@ -19,7 +19,7 @@ class ossim (
   $include_suricata = $ossim::params::include_suricata,
   $include_ossec    = $ossim::params::include_ossec,
   $verbose          = $ossim::params::verbose,
-#  $suricata_interfaces = $ossim::params::suricata_interfaces,
+  #$suricata_interfaces = $ossim::params::suricata_interfaces,
 
 ) inherits ossim::params {
   include geoip
@@ -39,7 +39,7 @@ class ossim (
   }
   package { 'ossim-agent':
     ensure  => $package_ensure,
-    require => Package['GeoIP'],
+    #require => Package['GeoIP'],
   }
   file { '/etc/ossim/agent/config.cfg':
     ensure  => file,
