@@ -41,6 +41,10 @@ class ossim (
     require => Package['ossim-agent'],
   }
 
+  file { '/etc/ossim/agent/plugins':
+    ensure => directory,
+  }
+
   service { 'ossim-agent':
     ensure    => running,
     enable    => true,
